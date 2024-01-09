@@ -6,15 +6,18 @@ LOG='/var/log/background.log'
 echo "Background Started" >> ${LOG}
 
 # Install Hugo
-snap install hugo >> ${LOG}
+echo "install hugo" >> ${LOG}
+snap install hugo
 
 # Clone My Hugo Repository
-git clone https://github.com/ijikeman/ijikeman.github.io.git ./repos >> ${LOG}
+echo "clone hugo repository" >> ${LOG}
+git clone https://github.com/ijikeman/ijikeman.github.io.git ./repos
 
 # Downloads Hugo Theme
+echo "submodule update" >> ${LOG}
 cd ./repos
 git submodule update -i >> ${LOG}
 
 # Finished
-echo 'done' > /tmp/background-finished
+echo 'done' >> /tmp/background-finished
 echo "Done"
