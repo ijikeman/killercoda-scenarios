@@ -8,12 +8,15 @@ echo "Background Started" >> ${LOG}
 # Update Repository
 apt update
 
+# Install Hugo
+snap install hugo
+
 # Clone My Hugo Repository
 git clone https://github.com/ijikeman/ijikeman.github.io.git ./repos/
 
-# Build Hugo Image
+# Downloads Hugo Theme
 cd ./repos/
-docker-compose up -d
+git submodule update -i
 
 # Finished
 echo 'done' > /tmp/background-finished

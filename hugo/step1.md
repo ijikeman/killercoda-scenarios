@@ -1,7 +1,6 @@
-# Get docker list
+# Start Hugo Server
 ```
-docker ps
+hugo server --port 80 --bind 0.0.0.0
 ```{{exec}}
 
-* [ACCESS HTTP]({{TRAFFIC_HOST1_80}})
-* [ACCESS CUSTOM PORTS]({{TRAFFIC_SELECTOR}})
+* [ACCESS HUGO HTTP]({{TRAFFIC_HOST1_80}})
