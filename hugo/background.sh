@@ -13,7 +13,6 @@ git clone https://github.com/ijikeman/ijikeman.github.io.git ./repos/
 
 # Build Hugo Image
 cd ./repos/
-docker-compose build
 docker-compose up -d
 
 # Finished
