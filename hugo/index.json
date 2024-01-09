@@ -1,0 +1,22 @@
+{
+    "title": "Hugo Development",
+    "details": {
+        "intro": {
+            "text": "intro.md",
+            "foreground": "foreground.sh",
+            "background": "background.sh"
+        },
+        "steps": [
+            {
+                "title": "Step1",
+                "text": "step1.md"
+            }
+        ],
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "backend": {
+        "imageid": "ubuntu"
+    }
+}    
