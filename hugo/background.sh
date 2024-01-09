@@ -9,10 +9,10 @@ echo "Background Started" >> ${LOG}
 snap install hugo >> ${LOG}
 
 # Clone My Hugo Repository
-git clone https://github.com/ijikeman/ijikeman.github.io.git ./ >> ${LOG}
+git clone https://github.com/ijikeman/ijikeman.github.io.git ./repos >> ${LOG}
 
 # Downloads Hugo Theme
-cd ./
+cd ./repos
 git submodule update -i >> ${LOG}
 
 # Finished
