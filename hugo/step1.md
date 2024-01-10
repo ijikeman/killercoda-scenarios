@@ -8,5 +8,4 @@
 * Start Hugo Server
 `hugo server --port 443 --bind 0.0.0.0 --baseURL=$URL`{{exec}}
 
-* Access Hugo URL
-[ACCESS HUGO HTTPS]({{TRAFFIC_HOST1_443}})
+[ACCESS HUGO]({{TRAFFIC_HOST1_443}})
