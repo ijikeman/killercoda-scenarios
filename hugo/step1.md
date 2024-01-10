@@ -3,7 +3,7 @@
 `cd repos/`{{exec}}
 
 * Make HUGO Url
-`URL=\\`sed -e 's/PORT/443/' /etc/killercoda/host\\``{{exec}}
+`URL=\`sed -e 's/PORT/443/' /etc/killercoda/host\``{{exec}}
 
 * Start Hugo Server
 `hugo server --port 443 --bind 0.0.0.0 --baseURL=$URL`{{exec}}
