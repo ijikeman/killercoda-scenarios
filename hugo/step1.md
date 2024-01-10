@@ -5,10 +5,10 @@
 
 * Make HUGO Url
 
-`URL=\`sed -e 's/PORT/443/' /etc/killercoda/host\``{{exec}}
+`sed -e 's/^/hugo server --port 443 --bind 0.0.0.0 --baseURL=/' -e 's/PORT/443/' /etc/killercoda/host > startHugo.sh`{{exec}}
 
 * Start Hugo Server
 
-`hugo server --port 443 --bind 0.0.0.0 --baseURL=$URL`{{exec}}
+`sh startHugo.sh`{{exec}}
 
 [ACCESS HUGO]({{TRAFFIC_HOST1_443}})
