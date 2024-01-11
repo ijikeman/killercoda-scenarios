@@ -19,5 +19,5 @@ cd ./repos
 git submodule update -i >> ${LOG}
 
 # Finished
-echo 'done' >> /tmp/background-finished
-echo "Done"
+echo "Background Done" >> ${LOG}
+touch /tmp/background-finished

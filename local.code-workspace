@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../hugo_scenario_on_killercoda"
 		}
 	],
 	"settings": {
