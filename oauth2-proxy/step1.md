@@ -1,9 +1,7 @@
 # Oauth2-proxy Start
 
 ## oauth2-proxyの起動確認
-```
-Step1ではデフォルトの設定のまま、oauth2-proxyの起動を行い画面が表示されるまでを確認していきます
-```
+* Step1ではデフォルトの設定のまま、oauth2-proxyの起動を行い画面が表示されるまでを確
 
 ## 1. Install oauth2-proxy
 * oauth2-proxyを環境にインストールします
@@ -37,22 +35,23 @@ wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH
 vim /etc/oauth2_proxy.cfg
 ```{{exec}}
 
-* Custom Configuration File
+* 以下の内容に修正します
 ```
-http_address = "0.0.0.0:4180"
+http_address = "0.0.0.0:4180" # グローバルIPでアクセスする為、Listenアドレスに0.0.0.0を指定
 
 upstreams = [
     "http://127.0.0.1:8080/"
 ]
 
+# デフォルト
 email_domains = [
     "yourcompany.com"
 ]
 
-client_id = "123456.apps.googleusercontent.com"
-client_secret = "test"
+client_id = "123456.apps.googleusercontent.com" # デフォルト
+client_secret = "test" # 仮設定
 
-cookie_secret = "test"
+cookie_secret = "test" # 仮設定
 ```
 
 ### 5. Start oauth2-proxy
