@@ -1,6 +1,12 @@
 # Oauth2-proxy Start
 
-## 1. Install oauth2-proxy 
+## oauth2-proxyの起動確認
+```
+Step1ではデフォルトの設定のまま、oauth2-proxyの起動を行い画面が表示されるまでを確認していきます
+```
+
+## 1. Install oauth2-proxy
+* oauth2-proxyを環境にインストールします
 ```
 VERSION_OAUTH2=2.2.0
 VERSION_GO=1.8.1
@@ -14,34 +20,47 @@ chmod +x /usr/local/bin/oauth2_proxy
 ```{{exec}}
 
 ## 2. Set Service File on Systemd
+* 次にsystemdで起動できるようにoauth2-proxy.servceファイルを設置します
 ```
-wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH2%.*}`/contrib/oauth2_proxy.service.example -O /usr/lib/systemd/system/oauth2_proxy.service
+wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH2%.*}`/contrib/oauth2_proxy.service.example -O /usr/lib/systemd/system/oauth2-proxy.service
 ```{{exec}}
 
 ## 3. Set Sample Config File
+* 公式リポジトリより設定ファイルのサンプルを設置します
 ```
 wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH2%.*}`/contrib/oauth2_proxy.cfg.example -O /etc/oauth2_proxy.cfg
 ```{{exec}}
 
-## 4. Make Cookie Secret by python
+### 4. Customize Config File
+* 動作確認に必要な起動に最低限の項目のみ仮の内容で修正します
 ```
-python -c 'import os,base64; print(base64.urlsafe_b64encode(os.urandom(32)).decode())'
-```{{exec}}
-
-### 5. Customize Config File
-```
-vim /etc/oauth2-proxy.cfg
+vim /etc/oauth2_proxy.cfg
 ```{{exec}}
 
 * Custom Configuration File
 ```
+http_address = "0.0.0.0:4180"
 
+upstreams = [
+    "http://127.0.0.1:8080/"
+]
+
+email_domains = [
+    "yourcompany.com"
+]
+
+client_id = "123456.apps.googleusercontent.com"
+client_secret = "test"
+
+cookie_secret = "test"
 ```
 
-### 6. Start oauth2-proxy
+### 5. Start oauth2-proxy
+* 動作確認の為に、oauth2-proxyを起動します
 ```
 systemctl start oauth2-proxy
-```
+```{{exec}}
 
-### 7. Confirm oauth2-proxy
-* [ACCESS TO oauth2-proxy]({{TRAFFIC_HOST1_80}})
+### 6. Confirm oauth2-proxy
+* tcp/4180へアクセスし、oauth2-proxy画面が表示されることを確認します
+* [ACCESS TO oauth2-proxy]({{TRAFFIC_HOST1_4180}})
