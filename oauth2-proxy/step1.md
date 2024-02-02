@@ -20,7 +20,7 @@ chmod +x /usr/local/bin/oauth2_proxy
 ## 2. Set Service File on Systemd
 * 次にsystemdで起動できるようにoauth2-proxy.servceファイルを設置します
 ```
-wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH2%.*}`/contrib/oauth2_proxy.service.example -O /usr/lib/systemd/system/oauth2-proxy.service
+wget https://raw.githubusercontent.com/bitly/oauth2_proxy/v`echo ${VERSION_OAUTH2%.*}`/contrib/oauth2_proxy.service.example -O /usr/lib/systemd/system/oauth2_proxy.service
 ```{{exec}}
 
 ## 3. Set Sample Config File
@@ -52,12 +52,12 @@ client_id = "123456.apps.googleusercontent.com" # デフォルト
 client_secret = "test" # 仮設定
 
 cookie_secret = "test" # 仮設定
-```
+```{{copy}}
 
 ### 5. Start oauth2-proxy
 * 動作確認の為に、oauth2-proxyを起動します
 ```
-systemctl start oauth2-proxy
+systemctl start oauth2_proxy
 ```{{exec}}
 
 ### 6. Confirm oauth2-proxy
