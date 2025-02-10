@@ -14,7 +14,7 @@ python3 -m venv ~/venv
 source ~/venv/bin/activate
 
 # Install LangChain
-pip install langchain langchain-community
+pip install langchain langchain-community langchain-openai
 # openai qdrant-client sentence-transformers tiktoken
 
 # Install Docker
