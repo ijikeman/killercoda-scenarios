@@ -18,4 +18,18 @@ python manage.py runserver 0.0.0.0:8000
 ```{{exec}}
 
 ## 4. tcp/8000へアクセス
-* [ACCESS TO haproxy]({{TRAFFIC_HOST1_8000}})
+* [ACCESS TO 8000 Top]
+({{TRAFFIC_HOST1_8000}})
+
+## 5. DB Migration
+```
+python manage.py migrate
+```{{exec}}
+
+## 6. Creat Admin
+```
+python manage.py createsuperuser
+```{{exec}}
+
+## 7. Access Admin
+* [ACCESS TO Admin]({{TRAFFIC_HOST1_8000}})/admin/
