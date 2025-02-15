@@ -26,10 +26,13 @@ python manage.py runserver 0.0.0.0:8000
 python manage.py migrate
 ```{{exec}}
 
-## 6. Creat Admin
+## 6. Creat Admin User
 ```
 python manage.py createsuperuser
 ```{{exec}}
 
+* 指示にしたがってユーザ作成
+
 ## 7. Access Admin
-* [ACCESS TO Admin]({{TRAFFIC_HOST1_8000}})/admin/
+* 作成したユーザでログイン
+[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}})/admin/
