@@ -13,7 +13,12 @@ django-admin startproject myproject
 ## 3. Start Django Server
 ```
 cd myproject
-sed -i -e "s/ALLOWED_HOSTS\s*=\s*\[\]/ALLOWED_HOSTS = \[\'\*\'\]/" myproject/settings.py
+sed -i \
+-e "s/ALLOWED_HOSTS\s*=\s*\[\]/ALLOWED_HOSTS = \[\'\*\'\]/" \
+-e "s/en-us/ja/" \
+-e "s/UTC/Asia\/Tokyo/" \
+myproject/settings.py
+
 python manage.py runserver 0.0.0.0:8000
 ```{{exec}}
 
@@ -39,4 +44,4 @@ python manage.py runserver 0.0.0.0:8000
 ```{{exec}}
 
 * 作成したユーザでログイン
-[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}admin/)
+[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}/admin/)

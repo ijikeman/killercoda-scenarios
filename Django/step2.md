@@ -2,7 +2,6 @@
 
 ## 1. make project
 ```
-cd ~
 python manage.py startapp search
 cd search
 ```{{exec}}
@@ -62,31 +61,13 @@ def search_view(request):
     return render(request, "search/search.html", {"form": form, "results": results})
 ```
 
-## 5. Create URL
-* search/urls.py(その他はすべてコメントアウト)
-```
-from django.urls import path
-from .views import search_view
-
-urlpatterns = [
-    path('', search_view, name='search'),
-]
-```
-
-## 6. Create URL on projectにも登録
-* myproject/urls.py
-```
-from django.contrib import admin
-from django.urls import path, include
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('search.urls')),
-]
-```
-
-## 7. Create Template
+## 5. Create Template
 * search/templates/search/search.html
+```
+mkdir -p search/templates/search/
+vi search/templates/search/search.html
+```{{exec}}
+
 ```
 <!DOCTYPE html>
 <html lang="ja">
@@ -116,10 +97,43 @@ urlpatterns = [
 </html>
 ```
 
-* search/settings.py
+## 6. Create URL
+* search/urls.py(その他はすべてコメントアウト)
 ```
-INSTALLED_APPS = [
-+    'apps.search',  # これがあることを確認
-...
+from django.urls import path
+from .views import search_view
+
+urlpatterns = [
+    path('', search_view, name='search'),
 ]
 ```
+
+## 7. Create URL on projectにも登録
+* myproject/urls.py
+```
+from django.contrib import admin
+#from django.urls import path
+from django.urls import path, include # include Add
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('search/', include('search.urls')), # Add
+]
+```
+
+## 8. search/app.pyに記載されているクラス(SearchConfig)を登録する
+* myproject/settings.py
+```
+INSTALLED_APPS = [
+...
+    'search.apps.SearchConfig', # Add
+]
+```
+
+## 9. Access Search App
+```
+python manage.py runserver 0.0.0.0:8000
+```{{exec}}
+
+* 作成したユーザでログイン
+[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}/search/)
