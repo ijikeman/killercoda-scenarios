@@ -15,7 +15,10 @@ source ~/venv/bin/activate
 
 # Install LangChain
 echo '[Log]: start Langchain install' >> $LOG
-pip install langchain langchain-community langchain-openai sentence-transformers tiktoken
+pip install langchain langchain-community
+pip install langchain-openai
+pip install sentence-transformers
+pip install tiktoken
 echo '[Log]: end Langchain install' >> $LOG
 
 # Install Docker
