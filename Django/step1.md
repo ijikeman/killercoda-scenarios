@@ -34,5 +34,9 @@ python manage.py createsuperuser
 * 指示にしたがってユーザ作成
 
 ## 7. Access Admin
+```
+python manage.py runserver 0.0.0.0:8000
+```{{exec}}
+
 * 作成したユーザでログイン
-[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}})/admin/
+[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}admin/)
