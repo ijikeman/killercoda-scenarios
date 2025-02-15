@@ -15,8 +15,7 @@ source ~/venv/bin/activate
 
 # Install LangChain
 echo '[Log]: start Langchain install' >> $LOG
-pip install langchain langchain-community langchain-openai
-# openai qdrant-client sentence-transformers tiktoken
+pip install langchain langchain-community langchain-openai sentence-transformers tiktoken
 echo '[Log]: end Langchain install' >> $LOG
 
 # Install Docker
@@ -52,6 +51,11 @@ echo '[Log]: end qdrant install' >> $LOG
 echo '[Log]: start qdrant client install' >> $LOG
 pip install qdrant-client
 echo '[Log]: end qdrant client install' >> $LOG
+
+# Sample Code Download
+echo '[Log]: start Sample Code' >> $LOG
+git clone https://github.com/ijikeman/Killercoda_LangChain_Sample.git
+echo '[Log]: end Sample Code' >> $LOG
 
 # Finished
 echo "[Log]: Background Done" >> ${LOG}
