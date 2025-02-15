@@ -49,6 +49,10 @@ EOF
 docker compose up -d
 echo '[Log]: end qdrant install' >> $LOG
 
+echo '[Log]: start qdrant client install' >> $LOG
+pip install qdrant-client
+echo '[Log]: end qdrant client install' >> $LOG
+
 # Finished
 echo "[Log]: Background Done" >> ${LOG}
 touch /tmp/background-finished
