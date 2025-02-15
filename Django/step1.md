@@ -1,4 +1,4 @@
-# LangChain Start
+# Django Start
 
 ## 1. exec venv
 ```
