@@ -13,10 +13,9 @@ django-admin startproject myproject
 ## 3. Start Django Server
 ```
 cd myproject
+sed -i -e "s/ALLOWED_HOSTS\s\=\s\[\]/ALLOWED_HOSTS\s=\s\[\'\*\'\]/" myproject/settings.py
 python manage.py runserver 0.0.0.0:8000
 ```{{exec}}
 
 ## 4. tcp/8000へアクセス
 * [ACCESS TO haproxy]({{TRAFFIC_HOST1_8000}})
-
-
