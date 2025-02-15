@@ -5,7 +5,7 @@
 source ~/venv/bin/activate
 ```{{exec}}
 
-## 2. make project
+## 2. Make project
 ```
 django-admin startproject myproject
 ```{{exec}}
@@ -26,7 +26,7 @@ python manage.py runserver 0.0.0.0:8000
 python manage.py migrate
 ```{{exec}}
 
-## 6. Creat Admin User
+## 6. Creat Super User
 ```
 python manage.py createsuperuser
 ```{{exec}}

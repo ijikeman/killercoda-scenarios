@@ -1,18 +1,13 @@
-# Search Project Start
+# Create Search App
 
 ## 1. make project
 ```
 cd ~
-django-admin startproject search
+python manage.py startapp search
 cd search
 ```{{exec}}
 
-## 2. Start Django Server
-```
-sed -i -e "s/ALLOWED_HOSTS\s*=\s*\[\]/ALLOWED_HOSTS = \[\'\*\'\]/" search/settings.py
-```{{exec}}
-
-## 3. Create Code
+## 2. Create Code
 * search/models.py 
 ```
 from django.db import models
@@ -27,9 +22,21 @@ class Item(models.Model):
 
 * migrate db
 ```
+python manage.py makemigrations search
 python manage.py migrate
 ```{{exec}}
 
+## 2. Create Test Data
+```
+python manage.py shell
+---
+from search.models import Item
+Item.objects.create(name="Django", description="A Python web framework")
+Item.objects.create(name="Flask", description="A lightweight Python web framework")
+exit()
+```
+
+## 3. Create Form
 * search/forms.py
 ```
 from django import forms
@@ -38,6 +45,7 @@ class SearchForm(forms.Form):
     query = forms.CharField(label="Search", max_length=100)
 ```
 
+## 4. Create View
 * search/views.py
 ```
 from django.shortcuts import render
@@ -54,6 +62,7 @@ def search_view(request):
     return render(request, "search/search.html", {"form": form, "results": results})
 ```
 
+## 5. Create URL
 * search/urls.py(その他はすべてコメントアウト)
 ```
 from django.urls import path
@@ -64,6 +73,19 @@ urlpatterns = [
 ]
 ```
 
+## 6. Create URL on projectにも登録
+* myproject/urls.py
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('search.urls')),
+]
+```
+
+## 7. Create Template
 * search/templates/search/search.html
 ```
 <!DOCTYPE html>
@@ -101,24 +123,3 @@ INSTALLED_APPS = [
 ...
 ]
 ```
-
-## 3. DB Migration
-
-```
-
-```{{exec}}
-
-## 6. Creat Admin User
-```
-python manage.py createsuperuser
-```{{exec}}
-
-* 指示にしたがってユーザ作成
-
-## 7. Access Admin
-```
-python manage.py runserver 0.0.0.0:8000
-```{{exec}}
-
-* 作成したユーザでログイン
-[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}admin/)
