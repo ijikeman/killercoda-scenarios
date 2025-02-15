@@ -7,7 +7,10 @@ cd search
 ```{{exec}}
 
 ## 2. Create Code
-* search/models.py 
+```
+vi search/models.py 
+```{{exec}}
+
 ```
 from django.db import models
 
@@ -17,7 +20,7 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-```
+```{{copy}}
 
 * migrate db
 ```
@@ -28,24 +31,32 @@ python manage.py migrate
 ## 2. Create Test Data
 ```
 python manage.py shell
----
+```{{exec}}
+
+```
 from search.models import Item
 Item.objects.create(name="Django", description="A Python web framework")
 Item.objects.create(name="Flask", description="A lightweight Python web framework")
 exit()
-```
+```{{copy}}
 
 ## 3. Create Form
-* search/forms.py
+```
+vi search/forms.py
+```{{exec}}
+
 ```
 from django import forms
 
 class SearchForm(forms.Form):
     query = forms.CharField(label="Search", max_length=100)
-```
+```{{copy}}
 
 ## 4. Create View
-* search/views.py
+```
+vi search/views.py
+```{{exec}}
+
 ```
 from django.shortcuts import render
 from .models import Item
@@ -59,7 +70,7 @@ def search_view(request):
         results = Item.objects.filter(name__icontains=query)
 
     return render(request, "search/search.html", {"form": form, "results": results})
-```
+```{{copy}}
 
 ## 5. Create Template
 * search/templates/search/search.html
@@ -95,7 +106,7 @@ vi search/templates/search/search.html
     {% endif %}
 </body>
 </html>
-```
+```{{copy}}
 
 ## 6. Create URL
 * search/urls.py(その他はすべてコメントアウト)
@@ -106,10 +117,13 @@ from .views import search_view
 urlpatterns = [
     path('', search_view, name='search'),
 ]
-```
+```{{copy}}
 
 ## 7. Create URL on projectにも登録
-* myproject/urls.py
+```
+vi myproject/urls.py
+```{{exec}}
+
 ```
 from django.contrib import admin
 #from django.urls import path
@@ -119,16 +133,19 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('search/', include('search.urls')), # Add
 ]
-```
+```{{copy}}
 
 ## 8. search/app.pyに記載されているクラス(SearchConfig)を登録する
-* myproject/settings.py
+```
+myproject/settings.py
+```{{exec}}
+
 ```
 INSTALLED_APPS = [
 ...
     'search.apps.SearchConfig', # Add
 ]
-```
+```{{copy}}
 
 ## 9. Access Search App
 ```
