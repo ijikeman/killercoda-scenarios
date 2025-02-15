@@ -9,7 +9,7 @@ cd search
 
 ## 2. Start Django Server
 ```
-sed -i -e "s/ALLOWED_HOSTS\s*=\s*\[\]/ALLOWED_HOSTS = \[\'\*\'\]/" myproject/settings.py
+sed -i -e "s/ALLOWED_HOSTS\s*=\s*\[\]/ALLOWED_HOSTS = \[\'\*\'\]/" search/settings.py
 ```{{exec}}
 
 ## 3. Create Code
@@ -25,15 +25,20 @@ class Item(models.Model):
         return self.name
 ```
 
+* migrate db
+```
+python manage.py migrate
+```{{exec}}
+
 * search/forms.py
 ```
 from django import forms
 
 class SearchForm(forms.Form):
-    query = forms.CharField(label="検索", max_length=100)
+    query = forms.CharField(label="Search", max_length=100)
 ```
 
-* View search/vies.py
+* search/views.py
 ```
 from django.shortcuts import render
 from .models import Item
@@ -49,7 +54,7 @@ def search_view(request):
     return render(request, "search/search.html", {"form": form, "results": results})
 ```
 
-* search/urls.py
+* search/urls.py(その他はすべてコメントアウト)
 ```
 from django.urls import path
 from .views import search_view
@@ -87,6 +92,14 @@ urlpatterns = [
     {% endif %}
 </body>
 </html>
+```
+
+* search/settings.py
+```
+INSTALLED_APPS = [
++    'apps.search',  # これがあることを確認
+...
+]
 ```
 
 ## 3. DB Migration

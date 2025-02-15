@@ -6,12 +6,14 @@
             "foreground": "foreground.sh",
             "background": "background.sh"
         },
-        "steps": [
-            {
+        "steps": [{
                 "title": "Step1",
                 "text": "step1.md"
-            }
-        ]
+            },
+            {
+                "title": "Step2",
+                "text": "step2.md"
+            }]
     },
     "backend": {
         "imageid": "ubuntu-4GB"
