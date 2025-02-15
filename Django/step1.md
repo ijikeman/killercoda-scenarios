@@ -1,6 +1,5 @@
 # LangChain Start
 
-## 
 ## 1. exec venv
 ```
 source ~/venv/bin/activate
@@ -9,12 +8,15 @@ source ~/venv/bin/activate
 ## 2. make project
 ```
 django-admin startproject myproject
-cd myproject
-python manage.py runserver
-```
+```{{exec}}
 
-### 6. Confirm oauth2-proxy
-* tcp/8080へアクセス
-* [ACCESS TO haproxy]({{TRAFFIC_HOST1_8080}})
+## 3. Start Django Server
+```
+cd myproject
+python manage.py runserver 0.0.0.0:8000
+```{{exec}}
+
+## 4. tcp/8000へアクセス
+* [ACCESS TO haproxy]({{TRAFFIC_HOST1_8000}})
 
 
