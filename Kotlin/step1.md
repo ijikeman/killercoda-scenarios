@@ -68,7 +68,6 @@ COPY gradle ./gradle
 # 拡張子を .kts に変更
 COPY build.gradle.kts settings.gradle.kts ./
 COPY src src
-RUN ./gradlew clean build
 RUN ./gradlew bootJar --no-daemon
 
 # アプリケーションのjarファイルをコピー
@@ -83,7 +82,7 @@ CMD ["java", "-jar", "/app/app.jar"]
 
 * docker build
 ```
-docker build -t kotlin-app .
+docker build --no-cache -t kotlin-app .
 ```{{exec}}
 
 * 起動
