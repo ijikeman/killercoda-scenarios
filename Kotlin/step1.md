@@ -20,11 +20,10 @@ cd demo
 
 ## Hello World!
 ```
-mkdir src/main/kotlin/com.example.demo/
-vi src/main/kotlin/com.example.demo/Controller.kt
+vi src/main/kotlin/com/example/demo/Helloworld.kt
 ```{{exec}}
 
-* Controller.kt
+* Helloworld.kt
 ```
 package com.example.demo
 
@@ -54,7 +53,6 @@ class HelloController {
 vi Dockerfile
 ```{{exec}}
 
-
 ```
 # ベースイメージ
 FROM openjdk:17-jdk-slim
@@ -69,10 +67,12 @@ COPY gradle ./gradle
 # Gradle キャッシュをコンテナにコピー
 # 拡張子を .kts に変更
 COPY build.gradle.kts settings.gradle.kts ./
+COPY src src
+RUN ./gradlew clean build
 RUN ./gradlew bootJar --no-daemon
 
 # アプリケーションのjarファイルをコピー
-COPY build/libs/*.jar /app/app.jar
+RUN cp build/libs/*.jar /app/app.jar
 
 # ポート番号を公開
 EXPOSE 8080
@@ -87,3 +87,6 @@ docker build -t kotlin-app .
 ```{{exec}}
 
 * 起動
+```
+docker run --rm --name kotlin -p 8080:8080 kotlin-app
+```
