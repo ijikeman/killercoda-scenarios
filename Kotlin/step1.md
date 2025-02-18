@@ -45,7 +45,7 @@ class HelloController {
 ./gradlew bootRun
 ```
 
-* 作成したユーザでログイン
+* Hello Worldを表示
 [ACCESS TO Hello World]({{TRAFFIC_HOST1_8080}})
 
 ## Docker化
@@ -90,3 +90,6 @@ docker build -t kotlin-app .
 ```
 docker run --rm --name kotlin -p 8080:8080 kotlin-app
 ```
+
+* Hello Worldを表示
+[ACCESS TO Hello World]({{TRAFFIC_HOST1_8080}})
