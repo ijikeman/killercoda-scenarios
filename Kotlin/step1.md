@@ -62,12 +62,14 @@ WORKDIR /app
 
 # Gradle Wrapper をコピー
 COPY gradlew gradlew
-COPY gradle ./gradle
+COPY gradle gradle
+
+# Source をコピー
+COPY src src
 
 # Gradle キャッシュをコンテナにコピー
 # 拡張子を .kts に変更
 COPY build.gradle.kts settings.gradle.kts ./
-COPY src src
 RUN ./gradlew bootJar --no-daemon
 
 # アプリケーションのjarファイルをコピー
