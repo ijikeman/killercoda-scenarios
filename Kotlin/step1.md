@@ -48,3 +48,42 @@ class HelloController {
 
 * 作成したユーザでログイン
 [ACCESS TO Hello World]({{TRAFFIC_HOST1_8080}})
+
+## Docker化
+```
+vi Dockerfile
+```{{exec}}
+
+
+```
+# ベースイメージ
+FROM openjdk:17-jdk-slim
+
+# アプリケーションを格納するディレクトリ
+WORKDIR /app
+
+# Gradle Wrapper をコピー
+COPY gradlew gradlew
+COPY gradle ./gradle
+
+# Gradle キャッシュをコンテナにコピー
+# 拡張子を .kts に変更
+COPY build.gradle.kts settings.gradle.kts ./
+RUN ./gradlew bootJar --no-daemon
+
+# アプリケーションのjarファイルをコピー
+COPY build/libs/*.jar /app/app.jar
+
+# ポート番号を公開
+EXPOSE 8080
+
+# アプリケーションを実行
+CMD ["java", "-jar", "/app/app.jar"]
+```{{copy}}
+
+* docker build
+```
+docker build -t kotlin-app .
+```{{exec}}
+
+* 起動
