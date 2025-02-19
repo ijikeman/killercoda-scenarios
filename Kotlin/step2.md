@@ -22,4 +22,4 @@ cd demo
 ```{{exec}}
 
 * 作成したユーザでログイン
-[ACCESS TO Admin]({{TRAFFIC_HOST1_8000}}/extractor/)
+[ACCESS TO App]({{TRAFFIC_HOST1_8080}}/)

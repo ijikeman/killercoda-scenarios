@@ -16,7 +16,6 @@ apt install gradle -y
 
 # Install SDKMAN
 echo "[Log]: Install SDKMAN" >> ${LOG}
-apt install unzip zip -y
 curl -s "https://get.sdkman.io" | bash
 source "/root/.sdkman/bin/sdkman-init.sh"
 
