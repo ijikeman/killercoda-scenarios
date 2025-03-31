@@ -2,7 +2,7 @@
  
 * springboot initializer download
 ```
-npx create-react-app myapp
+echo y|npx create-react-app myapp
 ```{{exec}}
 
 * アプリケーションを実行
